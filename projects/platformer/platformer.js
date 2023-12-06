@@ -49,8 +49,8 @@ createPlatform(900,525,68,10);
 createPlatform(525,500,68, 10);
 createPlatform(250,400,68,10);
 createPlatform(525,275,68,10);
-
-
+createPlatform(800,275,10,5);
+createPlatform(1000,150,500,5);
 
     
     // TODO 2
@@ -60,7 +60,9 @@ createPlatform(525,275,68,10);
     // example usage: createCollectable(type, x, y, gravity, bounce)
 
 createCollectable("steve",600,600);
-
+createCollectable("steve",250,350);
+createCollectable("steve",525,225);
+createCollectable("steve",1300,100);
 
     // TODO 3
     // Create cannons
@@ -69,8 +71,9 @@ createCollectable("steve",600,600);
     // example usage: createCannon(side, position, delay, width, height)
 
     createCannon("left", 500, 1000);
-
-
+    createCannon("right", 800, 600);
+    createCannon("top", 600, 700);
+    createCannon("right", 200, 600);
     /////////////////////////////////////////////////
     //////////ONLY CHANGE ABOVE THIS POINT///////////
     /////////////////////////////////////////////////
