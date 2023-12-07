@@ -3,9 +3,12 @@ body {
 }
 
 canvas {
-  background-color: rgb(102, 96, 96);
+  background-image:image(terraria.png);
+
 }
 
 img {
   display: none;
 }
+
+

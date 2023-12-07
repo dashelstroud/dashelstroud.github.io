@@ -17,7 +17,7 @@ $(function () {
     }
     //create walls
     createPlatform(-50, -50, canvas.width + 100, 50); //top
-    createPlatform(-50, canvas.height - 10, canvas.width + 100, 200); //right
+    createPlatform(-50, canvas.height - 10, canvas.width + 100,200); //right
     createPlatform(-50, -50, 50, canvas.height + 500); //bottom
     createPlatform(canvas.width, -50, 50, canvas.height + 100);
 
@@ -73,7 +73,7 @@ createCollectable("steve",1300,100);
     createCannon("left", 500, 1000);
     createCannon("right", 800, 600);
     createCannon("top", 600, 700);
-    createCannon("right", 200, 600);
+    createCannon("right", 100, 600);
     /////////////////////////////////////////////////
     //////////ONLY CHANGE ABOVE THIS POINT///////////
     /////////////////////////////////////////////////
