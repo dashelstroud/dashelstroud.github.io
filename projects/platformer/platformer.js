@@ -51,6 +51,7 @@ createPlatform(250,400,68,10);
 createPlatform(525,275,68,10);
 createPlatform(800,275,25,5);
 createPlatform(1000,150,500,5);
+createPlatform(50,700,450,5);
 
     
     // TODO 2
@@ -71,9 +72,9 @@ createCollectable("diamond",1300,100);
     // example usage: createCannon(side, position, delay, width, height)
 
     createCannon("left", 500, 1000);
-    createCannon("right", 800, 600);
     createCannon("top", 600, 700);
     createCannon("right", 100, 600);
+    createCannon("right", 800, 200);
     /////////////////////////////////////////////////
     //////////ONLY CHANGE ABOVE THIS POINT///////////
     /////////////////////////////////////////////////
