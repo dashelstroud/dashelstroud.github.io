@@ -49,7 +49,7 @@ createPlatform(900,525,68,10);
 createPlatform(525,500,68, 10);
 createPlatform(250,400,68,10);
 createPlatform(525,275,68,10);
-createPlatform(800,275,10,5);
+createPlatform(800,275,25,5);
 createPlatform(1000,150,500,5);
 
     
@@ -59,10 +59,10 @@ createPlatform(1000,150,500,5);
     // Your collectable choices are 'database' 'diamond' 'grace' 'kennedi' 'max' and 'steve'; more can be added if you wish
     // example usage: createCollectable(type, x, y, gravity, bounce)
 
-createCollectable("steve",600,600);
-createCollectable("steve",250,350);
-createCollectable("steve",525,225);
-createCollectable("steve",1300,100);
+createCollectable("diamond",600,600);
+createCollectable("diamond",250,350);
+createCollectable("diamond",525,225);
+createCollectable("diamond",1300,100);
 
     // TODO 3
     // Create cannons
