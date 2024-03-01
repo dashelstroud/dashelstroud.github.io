@@ -20,21 +20,22 @@ var init = function (window) {
         ////////////////////////////////////////////////////////////
         
         // TODO 1 : Declare and initialize our variables
-        var circle;
-        var circles = [];
+        var circle; //creates a variable named circle with no value
+        var circles = []; //creates an empty array with the name circle
 
 
         // TODO 2 : Create a function that draws a circle 
-       function drawCircle(){
-            circle = draw.randomCircleInArea(canvas, true, true, "#999", 2);
-            physikz.addRandomVelocity(circle, canvas,10, 10);
-            view.addChild(circle);
-            circles.push(circle);
+        
+       function drawCircle(){ //makes a function named drawCircle that draws a circle
+            circle = draw.randomCircleInArea(canvas, true, true, "#999", 2);// uses a draw function to draw a circle of a random size, color, and location onto the canvas
+            physikz.addRandomVelocity(circle, canvas,10, 10); //uses the physikz library to give the circle a random velocity/direction
+            view.addChild(circle); // makes the circle a child of view to make the circle appear on screen
+            circles.push(circle); // pushes the circle to the end of the circles array
         }
 
         // TODO 3 / 7 : Call the drawCircle() function 
-      for(var i = 0 ; i < 100 ; i++ ){
-        drawCircle()
+      for(var i = 0 ; i < 100 ; i++ ){ //creates a variable i with a value of 0 makes the loop stop when i gets to 99 and makes i go up by 1
+        drawCircle() // draws a circle every time the loop runs
       }
 
 
@@ -49,24 +50,18 @@ var init = function (window) {
         */
         function update() {
             // TODO 4 : Update the circle's position //
-            physikz.updatePosition(circles[0])
-            physikz.updatePosition(circles[1])
-            physikz.updatePosition(circles[2])
-            physikz.updatePosition(circles[3])
-            physikz.updatePosition(circles[4])
+           //deleted because we have iteration to do this with less repetition 
+
             
             // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
-            game.checkCirclePosition(circles[0])
-            game.checkCirclePosition(circles[1])
-            game.checkCirclePosition(circles[2])
-            game.checkCirclePosition(circles[3])
-            game.checkCirclePosition(circles[4])
+            //deleted because we have iteration to do this with less repetition 
 
             // TODO 8 : Iterate over the array
-           for(var i = 0 ;i < circles.length ;i++ ){
-            circles[i]
-            physikz.updatePosition(circles[i])
-            game.checkCirclePosition(circles[i])
+           for(var i = 0 ;i < circles.length ;i++ ){ //creates a variable i with a value of 0 makes the loop stop when i gets to 99 and makes i go up by 1
+            drawCircle() // draws a circle every time the loop runs
+            circles[i] // access the value from the array circles for every value of i
+            physikz.updatePosition(circles[i]) // makes every circle move
+            game.checkCirclePosition(circles[i]) // makes every circle, if they evr go off the screen, they will go back on the screen from the opposite of where they left
            }
             
         }
@@ -79,19 +74,19 @@ var init = function (window) {
         game.checkCirclePosition = function(circle) {
 
             // if the circle has gone past the RIGHT side of the screen then place it on the LEFT
-            if ( circle.x > canvas.width ) {
-                circle.x = 0;
+            if ( circle.x > canvas.width ) {  // checks if a circle is over the right side of the screen
+                circle.x = 0; //changes the circle's location to make it on the left side of the screen
             }
             
             // TODO 6 : YOUR CODE STARTS HERE //////////////////////
-            if ( circle.x < 0 ) {
-                circle.x = canvas.width;
+            if ( circle.x < 0 ) { //checks if a circle is past the left side of the creen
+                circle.x = canvas.width;//puts the circle on the right side of the screen
             }
-            if ( circle.y > canvas.height ) {
-                circle.y = 0;
+            if ( circle.y > canvas.height ) {// checks if the circle is under the bottom of the screen
+                circle.y = 0; //puts the circle at the top of the screen
             }
-            if ( circle.y < 0 ) {
-                circle.y = canvas.height;
+            if ( circle.y < 0 ) { //checks if a circle is above the top of the screen
+                circle.y = canvas.height; // puts the circle at the bottom of the screen
             }
 
 
