@@ -58,8 +58,6 @@ var init = function (window) {
 
             // TODO 8 : Iterate over the array
            for(var i = 0 ;i < circles.length ;i++ ){ //creates a variable i with a value of 0 makes the loop stop when i gets to 99 and makes i go up by 1
-            drawCircle() // draws a circle every time the loop runs
-            circles[i] // access the value from the array circles for every value of i
             physikz.updatePosition(circles[i]) // makes every circle move
             game.checkCirclePosition(circles[i]) // makes every circle, if they evr go off the screen, they will go back on the screen from the opposite of where they left
            }
