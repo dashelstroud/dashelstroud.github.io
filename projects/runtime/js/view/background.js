@@ -30,6 +30,7 @@ var background = function (window) {
         //////////////////////////////////////////////////////////////////
         // TODO (several):
         var tree;
+        var buildings = [];
       
         // called at the start of game and whenever the page is resized
         // add objects for display in background. draws each image added to the background once
@@ -61,7 +62,14 @@ var background = function (window) {
             background.addChild(moon);
 
             // TODO 4: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
-            
+            for (var i = 0; i < 5; i++) {  //creates a for loop starting at 0 that ends at 4
+                var buildingHeight = 300 * Math.random(); //sets building variable height to 300
+                var building = draw.rect(75, buildingHeight, "#8A31CC", "Black", 1); //makes a variable named building that draws a building
+                building.x = 200 * i; //sets the x position of the building
+                building.y = groundY - buildingHeight;//sets the y position of the building
+                background.addChild(building); //sets buidling as a child of background
+                buildings.push(building);//pushes building into buildings array
+            }
             
             // TODO 3: Part 1 - Add a tree
             tree = draw.bitmap("img/tree.png");  //assigns the tree variable to an image
@@ -82,13 +90,18 @@ var background = function (window) {
             var groundY = ground.y;
             
             // TODO 3: Part 2 - Move the tree!
-            tree.x = tree.x-3 //makes the tree move to the left
+            tree.x = tree.x-5 //makes the tree move to the left
             if(tree.x < -200){  // checks if the tree is off the left side of the screen 
                 tree.x = canvasWidth //puts the tree at the right side of the screen
             }
             // TODO 4: Part 2 - Parallax
-            
-
+            for (var i = 0; i < buildings.length; i++) { //creates a for loop to make the buildings move
+                var building = buildings[i];
+                building.x = building.x -=3
+                if(building.x < 100){
+                    building.x = canvasWidth;
+                }
+            }
         } // end of update function - DO NOT DELETE
         
         

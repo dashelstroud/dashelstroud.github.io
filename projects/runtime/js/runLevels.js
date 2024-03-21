@@ -19,7 +19,22 @@ var runLevels = function (window) {
     // TODOs 5 through 11 go here
     // BEGIN EDITING YOUR CODE HERE
 
-    
+
+    function createSawBlade(x,y){
+      var hitZoneSize = 25; //creates the size of the hitzone
+      var damageFromObstacle = 10; //sets the damge for an obstacle
+      var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); //makes a hitzone for a sawblade
+      sawBladeHitZone.x = x; //sets the saw blade hit zone to x
+      sawBladeHitZone.y = y; //sets the saw blade hit zone to y
+      game.addGameItem(sawBladeHitZone); // adds the saw blade to the game
+      var obstacleImage = draw.bitmap("img/sawblade.png"); //creates a variable that is an image of a sawblade
+      sawBladeHitZone.addChild(obstacleImage); //adds the variable as a child of the hitzone
+      obstacleImage.x = -25; //changes where the image is located with its x position
+      obstacleImage.y = -25; //changes where the saw blade image is located with the y position
+    }
+    createSawBlade(500,groundY-120)//calls the sawblade function
+    createSawBlade(350,groundY-10)//calls the sawblade function
+    createSawBlade(700,groundY-120) //calls the sawblade function
 
     function startLevel() {
       // TODO 13 goes below here
