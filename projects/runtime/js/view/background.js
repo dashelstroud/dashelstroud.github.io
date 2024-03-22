@@ -98,7 +98,7 @@ var background = function (window) {
             for (var i = 0; i < buildings.length; i++) { //creates a for loop to make the buildings move
                 var building = buildings[i];
                 building.x = building.x -=3
-                if(building.x < 100){
+                if(building.x < -100){
                     building.x = canvasWidth;
                 }
             }
