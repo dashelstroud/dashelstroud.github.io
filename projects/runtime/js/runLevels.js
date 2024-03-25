@@ -56,6 +56,31 @@ var runLevels = function (window) {
       }
     }
 
+    function createEnemy2(x,y){
+      var enemy = game.createGameItem("enemy", 25); //creates a variable for an enemy
+      var crocodile = draw.bitmap("img/cropped croc.png"); //creates a variable that draws a crocodile
+      crocodile.x = -25; //places the enemy hitbox's x coordinate
+      crocodile.y = -25; // places the enemy hitbox's y coordinate
+      enemy.addChild(crocodile); //adds the redSquare as a child of the enemy 
+      enemy.x = x; // changes the x position of the redSquare
+      enemy.y = y; //chnages the y position of the redSquare
+      game.addGameItem(enemy); // adds enemy to the game
+      enemy.velocityX = -0 // makes the enemy move
+
+      crocodile.scaleX = .3
+      crocodile.scaleY = .3
+
+      
+      enemy.onPlayerCollision = function () { // creates a function
+        game.changeIntegrity(-10) // makes the player lose 10 health  on hit
+      };
+      enemy.onProjectileCollision = function(){
+        game.increaseScore(100); //increases score at being shot
+        //enemy.fadeOut();
+        enemy.shrink(); //makes blue square shrink at being shot
+      }
+    }
+
     function createReward(x,y){
       var reward = game.createGameItem("enemy", 25); //creates a variable for an reward
       var blueSquare = draw.rect(50, 50, "blue"); //creates a variable that draws a blue square
@@ -105,6 +130,8 @@ var runLevels = function (window) {
     createEnemy(800,groundY -50)
     createEnemy(600,groundY -50)
     createReward(500, groundY -70)
+    createEnemy2(1000, groundY -50)
+    createMarker(700, groundY -100)
     function startLevel() {
       // TODO 13 goes below here
 
