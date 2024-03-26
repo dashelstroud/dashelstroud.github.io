@@ -15,9 +15,17 @@ var makeLevelData = function (window) {
         number: 1,
         speed: -3,
         gameItems: [
-          { type: "sawblade", x: 400, y: groundY },
-          { type: "sawblade", x: 600, y: groundY },
-          { type: "sawblade", x: 900, y: groundY },
+          { type: "sawblade", x: 350, y: groundY-120 },
+          { type: "sawblade", x: 500, y: groundY-10 },
+          { type: "sawblade", x: 700, y: groundY-120 },
+
+          { type: "enemy", x: 600, y: groundY-50 },
+          { type: "enemy", x: 800, y: groundY-50 },
+
+          { type: "reward", x: 500, y: groundY-70 },
+          
+          { type: "marker", x: 700, y: groundY-100 },
+          { type: "enemy2", x: 400, y: groundY -150, image: "img/cropped croc.png", moveX: -25, moveY: -25, velocity: 0, scaleX: 0.3, scaleY: 0.3, damage: -10, scoreIncrease: 100 }
         ],
       },
       {
