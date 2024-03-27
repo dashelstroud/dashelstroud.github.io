@@ -36,12 +36,15 @@ var background = function (window) {
         // add objects for display in background. draws each image added to the background once
         function render() {
             background.removeAllChildren();
-
+            
             // TODO 1:
             // this currently fills the background with an obnoxious yellow;
             // you should modify both the height and color to suit your game
-            var backgroundFill = draw.rect(canvasWidth,groundY,'#574BD6'); //creates a variable named backgroundFill
-            background.addChild(backgroundFill); // adds backgroundFill as a child to the background
+           //var backgroundFill = draw.rect(canvasWidth,groundY,'#574BD6'); //creates a variable named backgroundFill
+           //background.addChild(backgroundFill); // adds backgroundFill as a child to the background
+           var backgroundFill = draw.rect(canvasWidth,groundY,"img/Sewer-BACK.png"); //creates a variable named backgroundFill
+           background.addChild(backgroundFill); // adds backgroundFill as a child to the background
+           
             
             // TODO 2: - Add a moon and starfield
 

@@ -25,7 +25,8 @@ var makeLevelData = function (window) {
           { type: "reward", x: 500, y: groundY-70 },
           
           { type: "marker", x: 700, y: groundY-100 },
-          { type: "enemy2", x: 400, y: groundY -150, image: "img/cropped croc.png", moveX: -25, moveY: -25, velocity: 0, scaleX: 0.3, scaleY: 0.3, damage: -10, scoreIncrease: 100 }
+
+          { type: "enemy2", x: 400, y: groundY -10, image: "img/cropped croc.png", moveX: -60, moveY: -15, velocity: -1, scaleX: 0.3, scaleY: 0.3, damage: -10, scoreIncrease: 100 }
         ],
       },
       {

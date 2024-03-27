@@ -58,7 +58,7 @@ var runLevels = function (window) {
     }
 
     function createEnemy2(x,y, image, moveX,moveY,velocity, scaleX,scaleY,damage,scoreIncrease){
-      var enemy = game.createGameItem("enemy", 25); //creates a variable for an enemy
+      var enemy = game.createGameItem("enemy", 50); //creates a variable for an enemy
       var crocodile = draw.bitmap(image); //creates a variable that draws a crocodile
       crocodile.x = moveX; //places the enemy hitbox's x coordinate
       crocodile.y = moveY; // places the enemy hitbox's y coordinate
@@ -68,8 +68,8 @@ var runLevels = function (window) {
       game.addGameItem(enemy); // adds enemy to the game
       enemy.velocityX = velocity // makes the enemy move
 
-      crocodile.scaleX = scaleX
-      crocodile.scaleY = scaleY
+      crocodile.scaleX = scaleX // changes the size of crocodile
+      crocodile.scaleY = scaleY // changes the size of crocodile
 
       
       enemy.onPlayerCollision = function () { // creates a function
@@ -122,7 +122,7 @@ var runLevels = function (window) {
 
 
   //function calls
-  createEnemy2(400,groundY-150)
+  
 
     function startLevel() {
       // TODO 13 goes below here
