@@ -70,6 +70,7 @@ var runLevels = function (window) {
 
       crocodile.scaleX = scaleX // changes the size of crocodile
       crocodile.scaleY = scaleY // changes the size of crocodile
+      
 
       
       enemy.onPlayerCollision = function () { // creates a function
@@ -115,7 +116,7 @@ var runLevels = function (window) {
       
       marker.onPlayerCollision = function () { // creates a function
         game.changeIntegrity(+10) // makes the player GAIN 10 health  on hit
-        marker.shrink();
+        marker.shrink(); //causes the marker to disappear
       };
 
     }
@@ -124,28 +125,28 @@ var runLevels = function (window) {
   //function calls
   
 
-    function startLevel() {
+    function startLevel() { //creates a funtion named startlevel
       // TODO 13 goes below here
 
-      var level = levelData[currentLevel]
-      var levelObjects = level.gameItems
+      var level = levelData[currentLevel] //creates a variable named level that tracks what level we are on
+      var levelObjects = level.gameItems //creates a variable named levelObjects
 
-      for(var i = 0;i < levelObjects.length ;i++){
-        var item = levelObjects[i]
-        if(item.type === "sawblade"){
-          createSawBlade(item.x,item.y)
+      for(var i = 0;i < levelObjects.length ;i++){ //creates a for loop
+        var item = levelObjects[i] //creates a variable named item that is equal to level.gameItems["i"]
+        if(item.type === "sawblade"){ //chacks if the item.type equals sawblade
+          createSawBlade(item.x,item.y) //creates a sawblade
         }
-        if(item.type === "enemy"){
-          createEnemy(item.x,item.y)
+        if(item.type === "enemy"){ //chacks if item.ype equal enemy
+          createEnemy(item.x,item.y) //creates an enemy
         }
-        if(item.type === "reward"){
-          createReward(item.x, item.y)
+        if(item.type === "reward"){ //checks if item.type equals reward
+          createReward(item.x, item.y) //creates a reward
         }
-        if(item.type === "marker"){
-          createMarker(item.x, item.y)
+        if(item.type === "marker"){  //checks if item.type equals marker
+          createMarker(item.x, item.y) //creates marker
         }
-        if(item.type === "enemy2"){
-          createEnemy2(item.x,item.y, item.image, item.moveX, item.moveY, item.velocity, item.scaleX, item.scaleY, item.damage, item.scoreIncrease)
+        if(item.type === "enemy2"){ //checks if item.type equals enemy2
+          createEnemy2(item.x,item.y, item.image, item.moveX, item.moveY, item.velocity, item.scaleX, item.scaleY, item.damage, item.scoreIncrease) //creates enemy 2
         }
       }
 
