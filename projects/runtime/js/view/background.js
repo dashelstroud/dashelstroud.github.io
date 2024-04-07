@@ -42,8 +42,11 @@ var background = function (window) {
             // you should modify both the height and color to suit your game
            //var backgroundFill = draw.rect(canvasWidth,groundY,'#574BD6'); //creates a variable named backgroundFill
            //background.addChild(backgroundFill); // adds backgroundFill as a child to the background
-           var backgroundFill = draw.rect(canvasWidth,groundY,"img/Sewer-BACK.png"); //creates a variable named backgroundFill
+           var backgroundFill = draw.bitmap("img/Sewer-BACK2.png"); //creates a variable named backgroundFill
+
            background.addChild(backgroundFill); // adds backgroundFill as a child to the background
+
+           background.scaleY = .635
            
             
             // TODO 2: - Add a moon and starfield
