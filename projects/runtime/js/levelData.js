@@ -22,13 +22,17 @@ var makeLevelData = function (window) {
           { type: "enemy", x: 600, y: groundY-50 },
           { type: "enemy", x: 800, y: groundY-50 },
 
+          {type: "obstacle1", x: 1000, y: groundY - 115},
+
           { type: "reward", x: 500, y: groundY-70 },
           
           { type: "marker", x: 700, y: groundY-100 },
 
-          { type: "enemy2", x: 400, y: groundY -10, image: "img/cropped croc.png", moveX: -60, moveY: -15, velocity: -1, scaleX: .35, scaleY: .35, damage: -10, scoreIncrease: 100 },
+          { type: "enemy2", x: 500, y: groundY -10, velocity: -5},
 
-          { type: "enemy2", x: 700, y: groundY -10, image: "img/rat.png", moveX: -5, moveY: -5, velocity: -4, scaleX: 0.08, scaleY: 0.08, damage: -10, scoreIncrease: 100 }
+          { type: "rat", x : 1000, y:groundY - 20, velocity: -3},
+
+         // { type: "enemy2", x: 700, y: groundY -10, image: "img/rat.png", moveX: -5, moveY: -5, velocity: -4, scaleX: 0.08, scaleY: 0.08, damage: -10, scoreIncrease: 100 }
         ],
       },
       {
