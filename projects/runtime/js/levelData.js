@@ -32,7 +32,6 @@ var makeLevelData = function (window) {
 
           { type: "rat", x : 1000, y:groundY - 20, velocity: -3},
 
-         // { type: "enemy2", x: 700, y: groundY -10, image: "img/rat.png", moveX: -5, moveY: -5, velocity: -4, scaleX: 0.08, scaleY: 0.08, damage: -10, scoreIncrease: 100 }
         ],
       },
       {
@@ -40,7 +39,7 @@ var makeLevelData = function (window) {
         number: 2,
         speed: -3,
         gameItems: [
-          { type: "sawblade", x: 400, y: groundY },
+          { type: "sawblade", x: 400, y: groundY-40 },
           { type: "sawblade", x: 600, y: groundY },
           { type: "sawblade", x: 900, y: groundY },
         ],

@@ -42,11 +42,12 @@ var background = function (window) {
             // you should modify both the height and color to suit your game
            //var backgroundFill = draw.rect(canvasWidth,groundY,'#574BD6'); //creates a variable named backgroundFill
            //background.addChild(backgroundFill); // adds backgroundFill as a child to the background
-           var backgroundFill = draw.bitmap("img/Sewer-BACK2.png"); //creates a variable named backgroundFill
+           var backgroundFill = draw.bitmap("img/full background.png"); //creates a variable named backgroundFill
 
            background.addChild(backgroundFill); // adds backgroundFill as a child to the background
 
            background.scaleY = .635
+
            
             
             // TODO 2: - Add a moon and starfield
@@ -65,7 +66,7 @@ var background = function (window) {
             moon.y = groundY-350;
             moon.scaleX = .25;
             moon.scaleY = .25;
-            background.addChild(moon);
+            background.addChild(moon); // adds the moon to the background
 
             // TODO 4: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             for (var i = 0; i < 5; i++) {  //creates a for loop starting at 0 that ends at 4
@@ -107,6 +108,8 @@ var background = function (window) {
                 if(building.x < -100){
                     building.x = canvasWidth;
                 }
+
+                
             }
         } // end of update function - DO NOT DELETE
         

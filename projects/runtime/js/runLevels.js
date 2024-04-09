@@ -156,8 +156,8 @@ var runLevels = function (window) {
       marker.velocityX = -3 // makes the marker move
       
       marker.onPlayerCollision = function () { // creates a function
-        game.changeIntegrity(+10) // makes the player GAIN 10 health  on hit
         marker.shrink(); //causes the marker to disappear
+        startLevel();
       };
 
     }
