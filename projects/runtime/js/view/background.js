@@ -23,14 +23,14 @@ var background = function (window) {
         var groundY = ground.y;
         
         // container which will be returned
-        var background;
+        var background; //cretaes a variable named background
         
         //////////////////////////////////////////////////////////////////
         // ANIMATION VARIABLES HERE //////////////////////////////////////
         //////////////////////////////////////////////////////////////////
         // TODO (several):
-        var tree;
-        var buildings = [];
+        var tree; //creates a variable named tree
+        var buildings = []; //creates an array named buildings
       
         // called at the start of game and whenever the page is resized
         // add objects for display in background. draws each image added to the background once
@@ -43,13 +43,12 @@ var background = function (window) {
            //var backgroundFill = draw.rect(canvasWidth,groundY,'#574BD6'); //creates a variable named backgroundFill
            //background.addChild(backgroundFill); // adds backgroundFill as a child to the background
 
-           var backgroundFill = draw.bitmap("img/full background.png"); //creates a variable named backgroundFill
+           var backgroundFill = draw.bitmap("img/Sewer-BACK2.png"); //creates a variable named backgroundFill and assigns it to an image
+
 
            background.addChild(backgroundFill); // adds backgroundFill as a child to the background
 
-           background.x = -1000
-           background.scaleX = 2.5
-           background.scaleY = 1.62
+           background.scaleY = .64 //changes how tall the background is
 
 
 
@@ -57,7 +56,7 @@ var background = function (window) {
             
             // TODO 2: - Add a moon and starfield
 
-            for(var stars = 0;stars < 100 ;stars++){
+            for(var stars = 0;stars < 100 ;stars++){ //makes a for loop
                 var circle = draw.circle(3, "white", "#87B318", 2); //creates a circle variable
                 circle.x = canvasWidth * Math.random(); //makes a circle x value at a random point
                 circle.y = groundY * Math.random(); // makes a circle y value at a random point
@@ -66,12 +65,12 @@ var background = function (window) {
 
 
 
-            var moon = draw.bitmap("img/moon.png");
-            moon.x = canvasWidth-250;
-            moon.y = groundY-350;
-            moon.scaleX = .25;
-            moon.scaleY = .25;
-            background.addChild(moon); // adds the moon to the background
+            var moon = draw.bitmap("img/moon.png"); //creates a variable that creates a moon
+            moon.x = canvasWidth-250; //changes the moons location on the x axis
+            moon.y = groundY-350;// chnages the moons location of the y axis
+            moon.scaleX = .25; //changes the size of the moon on the x axis
+            moon.scaleY = .25; //changes the size of the moon on the y axis
+            //background.addChild(moon); // adds the moon to the background
 
             // TODO 4: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             for (var i = 0; i < 5; i++) {  //creates a for loop starting at 0 that ends at 4
@@ -79,7 +78,7 @@ var background = function (window) {
                 var building = draw.rect(75, buildingHeight, "#8A31CC", "Black", 1); //makes a variable named building that draws a building
                 building.x = 200 * i; //sets the x position of the building
                 building.y = groundY - buildingHeight;//sets the y position of the building
-                background.addChild(building); //sets buidling as a child of background
+                //background.addChild(building); //sets buidling as a child of background
                 buildings.push(building);//pushes building into buildings array
             }
             
@@ -87,7 +86,7 @@ var background = function (window) {
             tree = draw.bitmap("img/tree.png");  //assigns the tree variable to an image
             tree.x = canvasWidth-225;// changes the x position of the image
             tree.y = groundY -225; //changes the y position of the image
-            background.addChild(tree); //addes tree as a child of the background
+            //background.addChild(tree); //addes tree as a child of the background
             
         } // end of render function - DO NOT DELETE
     
@@ -97,7 +96,7 @@ var background = function (window) {
         // called on each timer "tick" - 60 times per second
         function update() {
             // useful variables
-            var canvasWidth = app.canvas.width;
+            var canvasWidth = app.canvas.width; 
             var canvasHeight = app.canvas.height;
             var groundY = ground.y;
             
@@ -108,13 +107,10 @@ var background = function (window) {
             }
             // TODO 4: Part 2 - Parallax
             for (var i = 0; i < buildings.length; i++) { //creates a for loop to make the buildings move
-                var building = buildings[i];
-                building.x = building.x -=3
-                if(building.x < -100){
-                    building.x = canvasWidth;
-                }
-                for(var i = 0;i < buildings.length;i++){
-                    background.x = background.x -50
+                var building = buildings[i]; //creates a variable called building that is equal to the values in the array buildings
+                building.x = building.x -=3 // makes the buildings move
+                if(building.x < -100){// checks if the buildings are past  -100 on the x axis
+                    building.x = canvasWidth; // moves the buildings to the end of the canvas
                 }
  
                 
@@ -124,9 +120,9 @@ var background = function (window) {
         
         
         /* Make a createjs Container for the background and let it know about the render and upate functions*/
-        background = new createjs.Container();
+        background = new createjs.Container(); // reassigns background
         background.resize = render;
-        background.update = update;
+        background.update = update; 
         
         /* make the background able to respond to resizing and timer updates*/
         app.addResizeable(background);
