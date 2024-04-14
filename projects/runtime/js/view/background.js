@@ -42,11 +42,16 @@ var background = function (window) {
             // you should modify both the height and color to suit your game
            //var backgroundFill = draw.rect(canvasWidth,groundY,'#574BD6'); //creates a variable named backgroundFill
            //background.addChild(backgroundFill); // adds backgroundFill as a child to the background
+
            var backgroundFill = draw.bitmap("img/full background.png"); //creates a variable named backgroundFill
 
            background.addChild(backgroundFill); // adds backgroundFill as a child to the background
 
-           background.scaleY = .635
+           background.x = -1000
+           background.scaleX = 2.5
+           background.scaleY = 1.62
+
+
 
            
             
@@ -108,7 +113,10 @@ var background = function (window) {
                 if(building.x < -100){
                     building.x = canvasWidth;
                 }
-
+                for(var i = 0;i < buildings.length;i++){
+                    background.x = background.x -50
+                }
+ 
                 
             }
         } // end of update function - DO NOT DELETE

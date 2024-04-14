@@ -49,6 +49,21 @@ var runLevels = function (window) {
       obstacleImage.scaleY = .2
     }
 
+    function createObstacle2(x,y){
+      var hitZoneSize = 30; //creates the size of the hitzone
+      var damageFromObstacle = 10; //sets the damge for an obstacle
+      var obstacleHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); //makes a hitzone for a sawblade
+      obstacleHitZone.x = x; //sets the saw blade hit zone to x
+      obstacleHitZone.y = y; //sets the saw blade hit zone to y
+      game.addGameItem(obstacleHitZone); // adds the saw blade to the game
+      var obstacleImage = draw.bitmap("img/spikes.png"); //creates a variable that is an image of a cloud
+      obstacleHitZone.addChild(obstacleImage); //adds the variable as a child of the hitzone
+      obstacleImage.x = -50; //changes where the image is located with its x position
+      obstacleImage.y = -50; //changes where the image is located with the y position
+      obstacleImage.scaleX = .05
+      obstacleImage.scaleY = .1
+    }
+
 
     function createEnemy(x,y){
       var enemy = game.createGameItem("enemy", 25); //creates a variable for an enemy
@@ -111,6 +126,32 @@ var runLevels = function (window) {
 
       rat.scaleX = .1  // changes the size of crocodile
       rat.scaleY = .1 // changes the size of crocodile
+      
+
+      
+      enemy.onPlayerCollision = function () { // creates a function
+        game.changeIntegrity(-10) // makes the player lose 10 health  on hit
+      };
+      enemy.onProjectileCollision = function(){
+        game.increaseScore(100); //increases score at being shot
+        //enemy.fadeOut();
+        enemy.shrink(); //makes blue square shrink at being shot
+      }
+    }
+
+    function createEnemy4(x,y,velocity){
+      var enemy = game.createGameItem("enemy", 25); //creates a variable for an enemy
+      var fly = draw.bitmap("img/fly.png"); //creates a variable that draws a crocodile
+      fly.x = -30; //places the enemy hitbox's x coordinate
+      fly.y =  -40, // places the enemy hitbox's y coordinate
+      enemy.addChild(fly); //adds the redSquare as a child of the enemy 
+      enemy.x = x; // changes the x position of the redSquare
+      enemy.y = y; //changes the y position of the redSquare
+      game.addGameItem(enemy); // adds enemy to the game
+      enemy.velocityX = velocity // makes the enemy move
+
+      fly.scaleX = .2  // changes the size of crocodile
+      fly.scaleY = .2 // changes the size of crocodile
       
 
       
@@ -189,11 +230,17 @@ var runLevels = function (window) {
         if(item.type === "enemy2"){ //checks if item.type equals enemy2
           createEnemy2(item.x,item.y,item.velocity) //creates enemy 2
         }
-        if(item.type === "obstacle1"){
+        if(item.type === "cloud"){
           createObstacle1(item.x,item.y)
         }
         if(item.type === "rat"){
           createEnemy3(item.x,item.y, item.velocity)
+        }
+        if(item.type === "fly"){
+          createEnemy4(item.x,item.y,item.velocity)
+        }
+        if(item.type === "spikes"){
+          createObstacle2(item.x,item.y)
         }
       }
 

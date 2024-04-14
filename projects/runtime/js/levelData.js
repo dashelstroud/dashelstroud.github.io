@@ -22,7 +22,7 @@ var makeLevelData = function (window) {
           { type: "enemy", x: 600, y: groundY-50 },
           { type: "enemy", x: 800, y: groundY-50 },
 
-          {type: "obstacle1", x: 1000, y: groundY - 115},
+          {type: "cloud", x: 1000, y: groundY - 115},
 
           { type: "reward", x: 500, y: groundY-70 },
           
@@ -31,6 +31,10 @@ var makeLevelData = function (window) {
           { type: "enemy2", x: 500, y: groundY -10, velocity: -5},
 
           { type: "rat", x : 1000, y:groundY - 20, velocity: -3},
+
+          { type: "fly", x : 1900, y : groundY - 80, velocity: -3 },
+
+          { type: "spikes", x : 1500, y : groundY -40}
 
         ],
       },
