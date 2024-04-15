@@ -45,8 +45,11 @@ var background = function (window) {
 
            var backgroundFill = draw.bitmap("img/Sewer-BACK2.png"); //creates a variable named backgroundFill and assigns it to an image
 
+           var bottomBackground = draw.bitmap("")
+
 
            background.addChild(backgroundFill); // adds backgroundFill as a child to the background
+           background.addChild(bottomBackground)
 
            background.scaleY = .64 //changes how tall the background is
 
@@ -60,7 +63,7 @@ var background = function (window) {
                 var circle = draw.circle(3, "white", "#87B318", 2); //creates a circle variable
                 circle.x = canvasWidth * Math.random(); //makes a circle x value at a random point
                 circle.y = groundY * Math.random(); // makes a circle y value at a random point
-                background.addChild(circle); //added it to the screen as a child of background
+                //background.addChild(circle); //added it to the screen as a child of background
             }
 
 
