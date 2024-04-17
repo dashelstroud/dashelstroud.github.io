@@ -130,7 +130,7 @@ var runLevels = function (window) {
 
       
       enemy.onPlayerCollision = function () { // creates a function
-        game.changeIntegrity(-10) // makes the player lose 10 health  on hit
+        game.changeIntegrity(-15) // makes the player lose 15 health  on hit
       };
       enemy.onProjectileCollision = function(){
         game.increaseScore(100); //increases score at being shot
@@ -156,7 +156,7 @@ var runLevels = function (window) {
 
       
       enemy.onPlayerCollision = function () { // creates a function
-        game.changeIntegrity(-10) // makes the player lose 10 health  on hit
+        game.changeIntegrity(-20) // makes the player lose 20 health  on hit
       };
       enemy.onProjectileCollision = function(){
         game.increaseScore(100); //increases score at being shot
@@ -183,7 +183,7 @@ var runLevels = function (window) {
 
       
       enemy.onPlayerCollision = function () { // creates a function
-        game.changeIntegrity(-10) // makes the player lose 10 health  on hit
+        game.changeIntegrity(-100) // makes the player lose 100 health  on hit
       };
       enemy.onProjectileCollision = function(){
         game.increaseScore(10000); //increases score at being shot
@@ -264,6 +264,8 @@ var runLevels = function (window) {
         marker.shrink(); //causes the marker to disappear
         startLevel(); //causes the next level to start
       };
+
+      
 
     }
 
