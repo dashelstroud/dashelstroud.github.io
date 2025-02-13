@@ -22,22 +22,26 @@ function runProgram(){
     D:68,
   }
 
-  var walker = {
-    posX: 0,
-    posY:0,
-    speedX: 0,
-    speedY:0,
-    width: $("#walker").width(),
-    height: $("#walker").height(),
+  var walker = Walker('#walker', 200, 0, 0, 0, $("#walker").width(), $("#walker").height() )
+  var walker2 = Walker('#walker2', 200, 200, 0, 0, $("#walker2").width(), $("#walker2").height() )
+  
+
+  function Walker(id, posX, posY, speedX, speedY, width, height ){
+    var obj = {
+      id: id,
+      posX: posX,
+      posY: posY,
+      speedX: speedX,
+      speedY: speedY,
+      width: width,
+      height: height,
+    }
+
+
+    return obj
   }
-  var walker2 = {
-    posX: 200,
-    posY:200,
-    speedX: 0,
-    speedY:0,
-    width: $("#walker2").width(),
-    height: $("#walker2").height(),
-  }
+
+
 
 
   const BOARD_WIDTH = $("#board").width()
