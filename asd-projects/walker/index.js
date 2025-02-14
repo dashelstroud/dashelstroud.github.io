@@ -22,24 +22,11 @@ function runProgram(){
     D:68,
   }
 
-  var walker = Walker('#walker', 200, 0, 0, 0, $("#walker").width(), $("#walker").height() )
+  var walker = Walker('#walker', 0, 0, 0, 0, $("#walker").width(), $("#walker").height() )
   var walker2 = Walker('#walker2', 200, 200, 0, 0, $("#walker2").width(), $("#walker2").height() )
   
 
-  function Walker(id, posX, posY, speedX, speedY, width, height ){
-    var obj = {
-      id: id,
-      posX: posX,
-      posY: posY,
-      speedX: speedX,
-      speedY: speedY,
-      width: width,
-      height: height,
-    }
-
-
-    return obj
-  }
+  
 
 
 
@@ -66,9 +53,12 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
-    repositionGameItem();
-    redrawGameItem();
-    wallCollision();
+    repositionGameItem(walker);
+    repositionGameItem(walker2);
+    redrawGameItem(walker);
+    redrawGameItem(walker2);
+    wallCollision(walker);
+    wallCollision(walker2);
     doCollide(walker,walker2)
   }
   
@@ -126,46 +116,27 @@ function runProgram(){
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
 
-  function repositionGameItem(){
-    walker.posX += walker.speedX
-    walker.posY += walker.speedY
-
-    walker2.posX += walker2.speedX
-    walker2.posY += walker2.speedY
+  function repositionGameItem(obj){
+    obj.posX += obj.speedX
+    obj.posY += obj.speedY
   }
-  function redrawGameItem(){
-    $('#walker').css('left', walker.posX);
-    $('#walker').css('top', walker.posY);
-
-    $('#walker2').css('left', walker2.posX);
-    $('#walker2').css('top', walker2.posY);
+  function redrawGameItem(obj){
+    $(obj.id).css('left', obj.posX);
+    $(obj.id).css('top', obj.posY);
   }
 
-  function wallCollision(){
-    if(walker.posX > BOARD_WIDTH - walker.width ){
-      walker.posX -= walker.speedX  
+  function wallCollision(obj){
+    if(obj.posX > BOARD_WIDTH - obj.width ){
+      obj.posX -= obj.speedX  
     }
-    if(walker.posX < 0 ){
-      walker.posX -= walker.speedX  
+    if(obj.posX < 0 ){
+      obj.posX -= obj.speedX  
     }
-    if(walker.posY > BOARD_HEIGHT - walker.height ){
-      walker.posY -= walker.speedY  
+    if(obj.posY > BOARD_HEIGHT - obj.height ){
+      obj.posY -= obj.speedY  
     }
-    if(walker.posY < 0 ){
-      walker.posY -= walker.speedY  
-    }
-
-    if(walker2.posX > BOARD_WIDTH - walker.width ){
-      walker2.posX -= walker2.speedX  
-    }
-    if(walker2.posX < 0 ){
-      walker2.posX -= walker2.speedX  
-    }
-    if(walker2.posY > BOARD_HEIGHT - walker.height ){
-      walker2.posY -= walker2.speedY  
-    }
-    if(walker2.posY < 0 ){
-      walker2.posY -= walker2.speedY  
+    if(obj.posY < 0 ){
+      obj.posY -= obj.speedY  
     }
   }
 
@@ -176,19 +147,37 @@ function runProgram(){
       walker2.posY < walker1.posY + walker1.height &&
       walker2.posY + walker2.height > walker1.posY
     ) {
-      stopTouchingMe()
+      stopTouchingMe(walker1, walker2)
     } else {
       console.log('el');
     }
   }
 }
-  function stopTouchingMe(){
-    walker.posX = 0
-    walker2.posX = 200
+  function stopTouchingMe(obj, obj2){
+    obj.posX = 0
+    obj.posY = 0
+    obj.speedX = 0
+    obj.speedY = 0
+    obj2.posX = 200
+    obj2.posY = 200
+    obj2.speedX = 0
+    obj2.speedY = 0
+    
     alert('Stop Touching Me')
   }
   
-
+  function Walker(id, posX, posY, speedX, speedY, width, height ){
+    var obj = {
+      id: id,
+      posX: posX,
+      posY: posY,
+      speedX: speedX,
+      speedY: speedY,
+      width: width,
+      height: height,
+    }
+    return obj
+  }
 
 
  
