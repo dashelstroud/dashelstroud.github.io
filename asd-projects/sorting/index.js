@@ -34,22 +34,41 @@ async function quickSort(array, left, right){
         return //stops the function
     }
     else{
-        var index = await partitian(array, left, right) 
-        if(left < index -1){
-            await quickSort(array, left, index -1)
+        var index = await partitian(array, left, right) //stores the value of the partitian function inside of the newly created index variable
+        if(left < index -1){ //checks if the left variable is less than index -1
+            await quickSort(array, left, index -1) // calls the quicksort function inside of the quicksort function creating an infinite loop wihout the BASE CASE
         }
                
-        if(right > index){
-            await quickSort(array, index, right)
+        if(right > index){//checks if the right variable is greater than the index value
+            await quickSort(array, index, right)//calls the quickSort function, creating an infinite loop without the BASE CASE
         }
     }
 }
 
 // TODOs 4 & 5: Implement partition
+async function partitian(array, left, right){
+    var pivot =  array[Math.floor((right + left) / 2)].value; //create  a variable named pivot that selectes a pivot by finding the middle index of the array 
+    while(left < right){//checks if the left most value is less than the right most value
+        while(array[left].value < pivot){//checks if the array's left value is less tha  the pivot point
+            left++//increases the left value
+        }
+        while(array[right].value > pivot){//checks if the array's right value is greater than the pivot
+            right--//decreases the right value
+        }
+        if(left < right){//checks if the left value is larger than the right value
+            swap(array, left, right);//swaps the left and right 
+            updateCounter(quickCounter);//chnages the number on the counter on the quick side
+            await sleep();//makes the sorting happen slower
+        }
+    }
 
+
+    return left + 1 //returns the new partitian index
+}
 
 // TODO 1: Implement swap
 
+//swaps two values of an array, is used as an argument
 function swap(array, i, j){ 
     var temp = array[i];//stores array[i]'s value in a temporary variable
     array[i] = array[j];//switches the value of array[i] to the value of array[j]
