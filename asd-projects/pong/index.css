@@ -1,6 +1,6 @@
 
 body {
-  background-color: darkgreen;
+  background-color: rgb(76, 39, 100);
 }
 
 #board {
@@ -11,22 +11,31 @@ body {
   position: relative;
 }
 
-#paddleLeft{
-  background-color: rgb(230, 230, 230);
+
+.paddle{
+  background-color: rgb(28, 184, 61);
   width: 15px;
   height: 80px;
   position: absolute;
   border-radius: 15px;
+}
+
+#paddleLeft{
   left: 10px;   /*Uncomment if you want to set a "starting" position*/ 
    top: 150px;    /* Uncomment if you want to set a "starting" position*/ 
 }
 
 #paddleRight{
-  background-color: rgb(230, 230, 230);
-  width: 15px;
-  height: 80px;
-  position: absolute;
-  border-radius: 15px;
-  left: 890px;   /*Uncomment if you want to set a "starting" position*/ 
+  left: 875px;   /*Uncomment if you want to set a "starting" position*/ 
    top: 150px;    /* Uncomment if you want to set a "starting" position*/ 
+}
+
+#ball {
+  background-color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  position: absolute;
+  left: 435px;
+  top: 180px;
 }

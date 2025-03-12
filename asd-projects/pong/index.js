@@ -44,6 +44,8 @@ const KEY = {
 
     var paddleRight = gameItem('#paddleRight', 0, 0)
 
+    var ball = gameItem('#ball',(Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1),(Math.random() * .5 + 2) * (Math.random() > 0.5 ? -1 : 1))
+
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKeyDown);
@@ -60,9 +62,15 @@ const KEY = {
   function newFrame() {
     drawGameItem(paddleLeft)
     moveGameItem(paddleLeft)
+    wallCollision(paddleLeft)
 
     drawGameItem(paddleRight)
     moveGameItem(paddleRight)
+    wallCollision(paddleRight)
+
+    drawGameItem(ball)
+    moveGameItem(ball)
+    wallCollision(ball)
   }
   
   /* 
@@ -111,6 +119,30 @@ function moveGameItem(obj){
   obj.posY += obj.speedY;
 }
 
+function wallCollision(obj){
+  if(obj.posX > BOARD_WIDTH - obj.width ){
+    obj.posX -= obj.speedX  
+  }
+  if(obj.posX < 0 ){
+    obj.posX *= obj.speedX  
+  }
+  if(obj.posY > BOARD_HEIGHT - obj.height ){
+    obj.posY -= obj.speedY  
+  }
+  if(obj.posY < 0 ){
+    obj.posY -= obj.speedY  
+  }
+}
+
+
+
+//check boundaries of game itmes
+//determine if objects collide
+//handle the ball touching walls
+//handle ball touching paddles
+//handle someone winning
+//handle scoring
+//handle resetting
 
   
   function endGame() {
