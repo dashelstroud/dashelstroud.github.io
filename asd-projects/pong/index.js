@@ -70,7 +70,7 @@ const KEY = {
 
     drawGameItem(ball)
     moveGameItem(ball)
-    wallCollision(ball)
+    wallBounce(ball)
   }
   
   /* 
@@ -131,6 +131,25 @@ function wallCollision(obj){
   }
   if(obj.posY < 0 ){
     obj.posY -= obj.speedY  
+  }
+}
+
+function wallBounce(obj){
+  if(obj.posX > BOARD_WIDTH - obj.width  && obj.posY < 0 + obj.height){
+    obj.speedX += -3  
+    obj.speedY += -3
+  }
+  if(obj.posX < 0 && obj.posY < 0){
+    obj.speedX -= -3  
+    obj.speedY += -3
+  }
+  if(obj.posX > BOARD_WIDTH - obj.width && obj.posY > BOARD_HEIGHT - obj.height ){
+    obj.speedX += -3  
+    obj.speedY += -3  
+  }
+  if(obj.posX < 0 && obj.posY > BOARD_HEIGHT - obj.height ){
+    obj.speedX -= -3  
+    obj.speedY += -3  
   }
 }
 
