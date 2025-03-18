@@ -62,21 +62,17 @@ const KEY = {
     drawGameItem(paddleLeft)
     moveGameItem(paddleLeft)
     wallCollision(paddleLeft)
-    paddleBounce(paddleLeft)
 
     drawGameItem(paddleRight)
     moveGameItem(paddleRight)
     wallCollision(paddleRight)
-    paddleBounce(paddleRight)
 
     drawGameItem(ball)
     moveGameItem(ball)
     wallBounce(ball)
     
 
-    score()
-
-    
+    paddleBallCollision()
   }
   
   /* 
@@ -125,6 +121,14 @@ function moveGameItem(obj){
   obj.posY += obj.speedY;
 }
 
+function doCollide(obj1, obj2) {
+  if (obj1.posX + obj1.width > obj2.posX && obj1.posX < obj2.posX + obj2.width && obj1.posY + obj1.height > obj2.posY && obj1.posY < obj2.posY + obj2.height) {
+    return true
+  }
+  return false
+}
+
+
 function wallCollision(obj){
   if(obj.posX > BOARD_WIDTH - obj.width ){
     obj.posX -= obj.speedX  
@@ -141,45 +145,35 @@ function wallCollision(obj){
 }
 
 function wallBounce(obj){
-  if(obj.posY < 0 + obj.height - obj.height ){
-    obj.speedY += 3  
+  if(obj.posY <= 0){
+    obj.speedY = -obj.speedY 
   }
-  if(obj.posY > 0 + BOARD_HEIGHT - obj.height ){
-    obj.speedY += -3  
+  if(obj.posY >= BOARD_HEIGHT - obj.height ){
+    obj.speedY = -obj.speedY 
   }
-  if(obj.posX < 0 + obj.width - obj.width ){
-    obj.speedX += 3  
+  if(obj.posX <= 0 + obj.width - obj.width ){
+    obj.speedX = -obj.speedX
   }
-  if(obj.posX > 0 + BOARD_WIDTH - obj.width ){
-    obj.speedX += -3  
-  }
-}
-
-function paddleBounce(obj){
-  if(obj.posX === ball.posX && obj.posY === ball.posY){
-    ball.speedX *= -1
-    ball.speedY *= -1
+  if(obj.posX >= 0 + BOARD_WIDTH - obj.width ){
+    obj.speedX = -obj.speedX
   }
 }
 
-function score(){
-  var i = 0
-  var leftPlayerScore = [0,1,2,3,4,5,6,7]
-  var rightPlayerScore = [0,1,2,3,4,5,6,7]
 
-  if(ball.posX > BOARD_WIDTH - ball.width){
-    i++
-    leftPlayerScore[i]
-    console.log(leftPlayerScore[i])
-  }
-  
-  if(ball.posX < 0 + ball.width){
-    i++
-    rightPlayerScore[i]
-    console.log(rightPlayerScore[i])
-  }
+
+
+function paddleBallCollision(){
+ if(doCollide(ball,paddleLeft)){
+  ball.speedX = -ball.speedX
+ } 
+ if(doCollide(ball, paddleRight)){
+  ball.speedX = -ball.speedX
+ }
 
 }
+
+
+
 
 
 //check boundaries of game itmes
