@@ -73,6 +73,8 @@ const KEY = {
     
 
     paddleBallCollision()
+    
+    scoring()
   }
   
   /* 
@@ -151,15 +153,29 @@ function wallBounce(obj){
   if(obj.posY >= BOARD_HEIGHT - obj.height ){
     obj.speedY = -obj.speedY 
   }
-  if(obj.posX <= 0 + obj.width - obj.width ){
-    obj.speedX = -obj.speedX
-  }
-  if(obj.posX >= 0 + BOARD_WIDTH - obj.width ){
-    obj.speedX = -obj.speedX
-  }
 }
 
+function scoring(){
+  var score = [0,0]
+  var leftPlayerScore = 0
+  var rightPlayerScore = 0
 
+  if(ball.posX <= 0 ){
+    reset()
+    score[0]++
+    console.log(score[0])
+    leftPlayerScore = score[0]
+    score[0] = leftPlayerScore
+  }
+
+  if(ball.posX >= 0 + BOARD_WIDTH - ball.width ){
+    reset()
+    score[1]++
+    console.log(score[1])
+    rightPlayerScore = score[1]
+    score[1] = rightPlayerScore
+  }
+}
 
 
 function paddleBallCollision(){
@@ -169,9 +185,16 @@ function paddleBallCollision(){
  if(doCollide(ball, paddleRight)){
   ball.speedX = -ball.speedX
  }
-
 }
 
+function reset(){
+  ball.posX = BOARD_WIDTH - BOARD_WIDTH/2
+  ball.posY = BOARD_HEIGHT - BOARD_HEIGHT/2
+  ball.speedX = (Math.random() * .5 + 2) * (Math.random() > 0.5 ? -1 : 1)
+
+  paddleLeft.posY = BOARD_HEIGHT - BOARD_HEIGHT/2 - paddleLeft.height
+  paddleRight.posY = BOARD_HEIGHT - BOARD_HEIGHT/2 - paddleRight.height
+}
 
 
 
