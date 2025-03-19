@@ -39,3 +39,23 @@ body {
   left: 435px;
   top: 180px;
 }
+
+
+#leftScore {
+  color: white;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 435px;
+  top: 180px;
+  content: "0"
+}
+#rightScore {
+  color: white;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 900px;
+  top: 180px;
+  content: "0"
+}

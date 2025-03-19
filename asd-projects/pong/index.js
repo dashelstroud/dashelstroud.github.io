@@ -45,6 +45,10 @@ const KEY = {
 
     var ball = gameItem('#ball',(Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1),(Math.random() * .5 + 2) * (Math.random() > 0.5 ? -1 : 1))
 
+    var leftScore = gameItem('#leftScore',0,0)
+
+    var rightScore = gameItem('#rightScore',0,0)
+
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKeyDown);
@@ -75,6 +79,11 @@ const KEY = {
     paddleBallCollision()
     
     scoring()
+    
+    drawGameItem(leftScore)
+
+    drawGameItem(rightScore)
+    
   }
   
   /* 
