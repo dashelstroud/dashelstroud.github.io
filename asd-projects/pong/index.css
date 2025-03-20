@@ -46,8 +46,8 @@ body {
   width: 20px;
   height: 20px;
   position: absolute;
-  left: 435px;
-  top: 180px;
+  left: 900px;
+  top: 500px;
   content: "0"
 }
 #rightScore {
@@ -55,7 +55,7 @@ body {
   width: 20px;
   height: 20px;
   position: absolute;
-  left: 900px;
-  top: 180px;
+  left: 100px;
+  top: 500px;
   content: "0"
 }

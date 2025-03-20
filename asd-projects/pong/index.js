@@ -45,9 +45,9 @@ const KEY = {
 
     var ball = gameItem('#ball',(Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1),(Math.random() * .5 + 2) * (Math.random() > 0.5 ? -1 : 1))
 
-    var leftScore = gameItem('#leftScore',0,0)
+    var leftScore = gameItem('#leftScore')
 
-    var rightScore = gameItem('#rightScore',0,0)
+    var rightScore = makeText('#rightScore')
 
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
@@ -164,25 +164,17 @@ function wallBounce(obj){
   }
 }
 
-function scoring(){
-  var score = [0,0]
-  var leftPlayerScore = 0
-  var rightPlayerScore = 0
 
+
+function scoring(){
   if(ball.posX <= 0 ){
+    leftScore.text +=1
     reset()
-    score[0]++
-    console.log(score[0])
-    leftPlayerScore = score[0]
-    score[0] = leftPlayerScore
   }
 
   if(ball.posX >= 0 + BOARD_WIDTH - ball.width ){
+    rightScore.text +=1
     reset()
-    score[1]++
-    console.log(score[1])
-    rightPlayerScore = score[1]
-    score[1] = rightPlayerScore
   }
 }
 
@@ -205,6 +197,17 @@ function reset(){
   paddleRight.posY = BOARD_HEIGHT - BOARD_HEIGHT/2 - paddleRight.height
 }
 
+function makeText(id){
+  var obj = {}
+
+    obj.posX = parseFloat($(id).css("left"))
+    obj.y =parseFloat($(id).css("top"))
+    obj.w = $(id).width()
+    obj.h = $(id).height()
+    obj.id = $(id)
+    obj.text = 0
+    return obj
+}
 
 
 
