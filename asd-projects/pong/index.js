@@ -45,9 +45,9 @@ const KEY = {
 
     var ball = gameItem('#ball',(Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1),(Math.random() * .5 + 2) * (Math.random() > 0.5 ? -1 : 1))
 
-    var leftScore = gameItem('#leftScore')
+    var leftScore = gameItem('#leftScore',0,0)
 
-    var rightScore = makeText('#rightScore')
+    var rightScore = gameItem('#rightScore', 0,0)
 
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
@@ -173,10 +173,11 @@ function scoring(){
   }
 
   if(ball.posX >= 0 + BOARD_WIDTH - ball.width ){
-    rightScore.text +=1
-    reset()
+    
+      document.getElementById("rightScore").innerHTML += 1
+      reset()
   }
-}
+    }
 
 
 function paddleBallCollision(){
@@ -197,17 +198,7 @@ function reset(){
   paddleRight.posY = BOARD_HEIGHT - BOARD_HEIGHT/2 - paddleRight.height
 }
 
-function makeText(id){
-  var obj = {}
 
-    obj.posX = parseFloat($(id).css("left"))
-    obj.y =parseFloat($(id).css("top"))
-    obj.w = $(id).width()
-    obj.h = $(id).height()
-    obj.id = $(id)
-    obj.text = 0
-    return obj
-}
 
 
 

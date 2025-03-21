@@ -48,7 +48,6 @@ body {
   position: absolute;
   left: 900px;
   top: 500px;
-  content: "0"
 }
 #rightScore {
   color: white;
@@ -57,5 +56,4 @@ body {
   position: absolute;
   left: 100px;
   top: 500px;
-  content: "0"
 }
