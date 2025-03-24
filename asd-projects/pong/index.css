@@ -40,20 +40,18 @@ body {
   top: 180px;
 }
 
-
-#leftScore {
-  color: white;
-  width: 20px;
-  height: 20px;
+.score{
+  width: 50px;
+  height: 50px;
   position: absolute;
   left: 900px;
   top: 500px;
+  text-shadow: 2px 1px
+}
+
+#leftScore {
+  color: rgb(53, 236, 33);
 }
 #rightScore {
-  color: white;
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  left: 100px;
-  top: 500px;
+  color: rgb(194, 46, 46);
 }
