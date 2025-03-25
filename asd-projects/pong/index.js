@@ -168,74 +168,86 @@ function wallBounce(obj){
 
 function scoring(){
   //left side scoring
-  if(ball.posX <= 0  && document.getElementById("leftScore").innerText === '0'){
-    document.getElementById("leftScore").innerHTML = 1
-    reset()
-}
-if(ball.posX <= 0 && document.getElementById("leftScore").innerText === '1'){
-  document.getElementById("leftScore").innerHTML = 2
-  reset()
-}
-if(ball.posX <= 0 && document.getElementById("leftScore").innerText === '2'){
-document.getElementById("leftScore").innerHTML = 3
-reset()
-}
-if(ball.posX <= 0 && document.getElementById("leftScore").innerText === '3'){
-document.getElementById("leftScore").innerHTML = 4
-reset()
-}
-if(ball.posX <= 0 && document.getElementById("leftScore").innerText === '4'){
-document.getElementById("leftScore").innerHTML = 5
-reset()
-}
-if(ball.posX <= 0 && document.getElementById("leftScore").innerText === '5'){
-document.getElementById("leftScore").innerHTML = 6
-reset()
-}
-if(ball.posX <= 0 && document.getElementById("leftScore").innerText === '6'){
-document.getElementById("leftScore").innerHTML = 7
-reset()
-}
-//right side scoring
-    if(ball.posX >= 0 + BOARD_WIDTH - ball.width  && document.getElementById("rightScore").innerText === '0'){
-      document.getElementById("rightScore").innerHTML = 1
+  function leftSideScoring(){
+    if(ball.posX <= 0  && document.getElementById("leftScore").innerText === '0'){
+      document.getElementById("leftScore").innerHTML = 1
       reset()
-  }
-  if(ball.posX >= 0 + BOARD_WIDTH - ball.width  && document.getElementById("rightScore").innerText === '1'){
-    document.getElementById("rightScore").innerHTML = 2
+    }
+    if(ball.posX <= 0 && document.getElementById("leftScore").innerText === '1'){
+      document.getElementById("leftScore").innerHTML = 2
+      reset()
+    }
+    if(ball.posX <= 0 && document.getElementById("leftScore").innerText === '2'){
+    document.getElementById("leftScore").innerHTML = 3
     reset()
-}
-if(ball.posX >= 0 + BOARD_WIDTH - ball.width  && document.getElementById("rightScore").innerText === '2'){
-  document.getElementById("rightScore").innerHTML = 3
-  reset()
-}
-if(ball.posX >= 0 + BOARD_WIDTH - ball.width  && document.getElementById("rightScore").innerText === '3'){
-document.getElementById("rightScore").innerHTML = 4
-reset()
-}
-if(ball.posX >= 0 + BOARD_WIDTH - ball.width  && document.getElementById("rightScore").innerText === '4'){
-  document.getElementById("rightScore").innerHTML = 5
-  reset()
-}
-if(ball.posX >= 0 + BOARD_WIDTH - ball.width  && document.getElementById("rightScore").innerText === '5'){
-document.getElementById("rightScore").innerHTML = 6
-reset()
-}
-if(ball.posX >= 0 + BOARD_WIDTH - ball.width  && document.getElementById("rightScore").innerText === '6'){
-document.getElementById("rightScore").innerHTML = 7
-reset()
-}
+    }
+    if(ball.posX <= 0 && document.getElementById("leftScore").innerText === '3'){
+    document.getElementById("leftScore").innerHTML = 4
+    reset()
+    }
+    if(ball.posX <= 0 && document.getElementById("leftScore").innerText === '4'){
+    document.getElementById("leftScore").innerHTML = 5
+    reset()
+    }
+    if(ball.posX <= 0 && document.getElementById("leftScore").innerText === '5'){
+    document.getElementById("leftScore").innerHTML = 6
+    reset()
+    }
+    if(ball.posX <= 0 && document.getElementById("leftScore").innerText === '6'){
+    document.getElementById("leftScore").innerHTML = 7
+    reset()
+    return 7
+    }
+    }
+    //right side scoring
+    function rightSideScoring(){
+      if(ball.posX >= 0 + BOARD_WIDTH - ball.width  && document.getElementById("rightScore").innerText === '0'){
+        document.getElementById("rightScore").innerHTML = 1
+        reset()
+        }
+        if(ball.posX >= 0 + BOARD_WIDTH - ball.width  && document.getElementById("rightScore").innerText === '1'){
+          document.getElementById("rightScore").innerHTML = 2
+          reset()
+        }
+        if(ball.posX >= 0 + BOARD_WIDTH - ball.width  && document.getElementById("rightScore").innerText === '2'){
+          document.getElementById("rightScore").innerHTML = 3
+          reset()
+        }
+        if(ball.posX >= 0 + BOARD_WIDTH - ball.width  && document.getElementById("rightScore").innerText === '3'){
+        document.getElementById("rightScore").innerHTML = 4
+        reset()
+        }
+        if(ball.posX >= 0 + BOARD_WIDTH - ball.width  && document.getElementById("rightScore").innerText === '4'){
+          document.getElementById("rightScore").innerHTML = 5
+          reset()
+        }
+        if(ball.posX >= 0 + BOARD_WIDTH - ball.width  && document.getElementById("rightScore").innerText === '5'){
+        document.getElementById("rightScore").innerHTML = 6
+        reset()
+        }
+        if(ball.posX >= 0 + BOARD_WIDTH - ball.width  && document.getElementById("rightScore").innerText === '6'){
+        document.getElementById("rightScore").innerHTML = 7
+        reset()
+        return 7
+        }
+    }
 
-  
+    if(document.getElementById("leftScore").innerText === '7'){
+      $('#board').css('background-color', 'red')
+    }
+
+    leftSideScoring()
+    rightSideScoring()
+
     }
 
 
 function paddleBallCollision(){
  if(doCollide(ball,paddleLeft)){
-  ball.speedX = -ball.speedX
+  ball.speedX = -1.15 * ball.speedX
  } 
  if(doCollide(ball, paddleRight)){
-  ball.speedX = -ball.speedX
+  ball.speedX = -1.15 * ball.speedX
  }
 }
 
