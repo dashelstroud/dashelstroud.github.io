@@ -43,11 +43,11 @@ const KEY = {
 
     var paddleRight = gameItem('#paddleRight', 0, 0)
 
-    var ball = gameItem('#ball',(Math.random() * 5 + 2) * (Math.random() > 0.5 ? -1 : 1),(Math.random() * .5 + 2) * (Math.random() > 0.5 ? -1 : 1))
+    var ball = gameItem('#ball',(Math.random() * 5 + 10),(Math.random() * 3 + 7))
 
-    var leftScore = gameItem('#leftScore',0,0)
+    var leftScore = 0
 
-    var rightScore = gameItem('#rightScore', 0,0)
+    var rightScore = 0
 
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
@@ -79,10 +79,6 @@ const KEY = {
     paddleBallCollision()
     
     scoring()
-    
-    drawGameItem(leftScore)
-
-    drawGameItem(rightScore)
     
   }
   
@@ -169,71 +165,23 @@ function wallBounce(obj){
 function scoring(){
   //left side scoring
   function leftSideScoring(){
-    if(ball.posX <= 0  && document.getElementById("leftScore").innerText === '0'){
-      document.getElementById("leftScore").innerHTML = 1
-      reset()
-    }
-    if(ball.posX <= 0 && document.getElementById("leftScore").innerText === '1'){
-      document.getElementById("leftScore").innerHTML = 2
-      reset()
-    }
-    if(ball.posX <= 0 && document.getElementById("leftScore").innerText === '2'){
-    document.getElementById("leftScore").innerHTML = 3
-    reset()
-    }
-    if(ball.posX <= 0 && document.getElementById("leftScore").innerText === '3'){
-    document.getElementById("leftScore").innerHTML = 4
-    reset()
-    }
-    if(ball.posX <= 0 && document.getElementById("leftScore").innerText === '4'){
-    document.getElementById("leftScore").innerHTML = 5
-    reset()
-    }
-    if(ball.posX <= 0 && document.getElementById("leftScore").innerText === '5'){
-    document.getElementById("leftScore").innerHTML = 6
-    reset()
-    }
-    if(ball.posX <= 0 && document.getElementById("leftScore").innerText === '6'){
-    document.getElementById("leftScore").innerHTML = 7
-    reset()
-    return 7
+    if(ball.posX <= 0){
+      leftScore++
+      $("#leftScore").text(leftScore)
+      reset();
     }
     }
     //right side scoring
     function rightSideScoring(){
-      if(ball.posX >= 0 + BOARD_WIDTH - ball.width  && document.getElementById("rightScore").innerText === '0'){
-        document.getElementById("rightScore").innerHTML = 1
+      if(ball.posX >= 0 + BOARD_WIDTH - ball.width){
+        rightScore++
+        $("#rightScore").text(rightScore)
         reset()
-        }
-        if(ball.posX >= 0 + BOARD_WIDTH - ball.width  && document.getElementById("rightScore").innerText === '1'){
-          document.getElementById("rightScore").innerHTML = 2
-          reset()
-        }
-        if(ball.posX >= 0 + BOARD_WIDTH - ball.width  && document.getElementById("rightScore").innerText === '2'){
-          document.getElementById("rightScore").innerHTML = 3
-          reset()
-        }
-        if(ball.posX >= 0 + BOARD_WIDTH - ball.width  && document.getElementById("rightScore").innerText === '3'){
-        document.getElementById("rightScore").innerHTML = 4
-        reset()
-        }
-        if(ball.posX >= 0 + BOARD_WIDTH - ball.width  && document.getElementById("rightScore").innerText === '4'){
-          document.getElementById("rightScore").innerHTML = 5
-          reset()
-        }
-        if(ball.posX >= 0 + BOARD_WIDTH - ball.width  && document.getElementById("rightScore").innerText === '5'){
-        document.getElementById("rightScore").innerHTML = 6
-        reset()
-        }
-        if(ball.posX >= 0 + BOARD_WIDTH - ball.width  && document.getElementById("rightScore").innerText === '6'){
-        document.getElementById("rightScore").innerHTML = 7
-        reset()
-        return 7
         }
     }
 
-    if(document.getElementById("leftScore").innerText === '7'){
-      $('#board').css('background-color', 'red')
+    if(leftScore === 7 || rightScore === 7){
+      endGame()
     }
 
     leftSideScoring()
@@ -254,10 +202,16 @@ function paddleBallCollision(){
 function reset(){
   ball.posX = BOARD_WIDTH - BOARD_WIDTH/2
   ball.posY = BOARD_HEIGHT - BOARD_HEIGHT/2
-  ball.speedX = (Math.random() * 5 * .5 + 2)
+  ball.speedX = (Math.random() * 5 +3)
 
   paddleLeft.posY = BOARD_HEIGHT - BOARD_HEIGHT/2 - paddleLeft.height
   paddleRight.posY = BOARD_HEIGHT - BOARD_HEIGHT/2 - paddleRight.height
+}
+
+function playAgainButton(){ //This function is made so that the "Play Again" button is displayed when ever the game is over. It refreshes the page when clicked.
+  $('#againButton').css("top", BOARD_HEIGHT / 2);
+  $('#againButton').css("left", BOARD_WIDTH / 2 - $('#againButton').width() / 2);
+  $("#againButton").show();
 }
 
 
@@ -276,7 +230,7 @@ function reset(){
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
-
+    playAgainButton()
     // turn off event handlers
     $(document).off();
   }
