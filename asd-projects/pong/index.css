@@ -15,7 +15,7 @@ body {
 .paddle{
   background-color: rgb(28, 184, 61);
   width: 15px;
-  height: 80px;
+  height: 100px;
   position: absolute;
   border-radius: 15px;
 }
@@ -67,4 +67,22 @@ body {
   padding: 15px;
   border: none;
   border-radius: 5px;;
+}
+
+.win{
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
+
+#leftWin{
+  top: 500px;
+  left: 5%;
+}
+
+#rightWin{
+  width: 400px;
+  height: 400px;
+  top: 400px;
+  left: 55%;
 }

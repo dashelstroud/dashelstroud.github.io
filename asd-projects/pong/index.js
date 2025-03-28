@@ -43,7 +43,7 @@ const KEY = {
 
     var paddleRight = gameItem('#paddleRight', 0, 0)
 
-    var ball = gameItem('#ball',(Math.random() * 5 + 10),(Math.random() * 3 + 7))
+    var ball = gameItem('#ball',(Math.random() * 5 + 10),(Math.random() * 3 + 4))
 
     var leftScore = 0
 
@@ -87,19 +87,19 @@ const KEY = {
   */
   function handleKeyDown(event) {
     if(event.which === KEY.W){
-      paddleLeft.speedY -= 5
+      paddleLeft.speedY -= 10
     }
 
     if(event.which === KEY.S){
-      paddleLeft.speedY += 5
+      paddleLeft.speedY += 10
     }
 
     if(event.which === KEY.up){
-      paddleRight.speedY -= 5
+      paddleRight.speedY -= 10
     }
 
     if(event.which === KEY.down){
-      paddleRight.speedY += 5
+      paddleRight.speedY += 10
     }
   }
 
@@ -184,8 +184,22 @@ function scoring(){
       endGame()
     }
 
+    function leftWin(){
+      if(rightScore === 7){
+        $('#leftWin').show()
+      }
+    }
+
+    function rightWin(){
+      if(leftScore === 7){
+        $('#rightWin').show()
+      }
+    }
+
     leftSideScoring()
     rightSideScoring()
+    leftWin()
+    rightWin()
 
     }
 
