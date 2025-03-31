@@ -198,6 +198,7 @@ function scoring(){
 
     leftSideScoring()
     rightSideScoring()
+
     leftWin()
     rightWin()
 
@@ -206,17 +207,19 @@ function scoring(){
 
 function paddleBallCollision(){
  if(doCollide(ball,paddleLeft)){
-  ball.speedX = -1.15 * ball.speedX
+  ball.speedX = -1.25 * ball.speedX
+  ball.speedY = 0.75 * ball.speedY
  } 
  if(doCollide(ball, paddleRight)){
-  ball.speedX = -1.15 * ball.speedX
+  ball.speedX = -1.25 * ball.speedX
+  ball.speedY = 0.85 * ball.speedY
  }
 }
 
 function reset(){
   ball.posX = BOARD_WIDTH - BOARD_WIDTH/2
   ball.posY = BOARD_HEIGHT - BOARD_HEIGHT/2
-  ball.speedX = (Math.random() * 5 +3)
+  ball.speedX = (Math.random() * 5 +5)
 
   paddleLeft.posY = BOARD_HEIGHT - BOARD_HEIGHT/2 - paddleLeft.height
   paddleRight.posY = BOARD_HEIGHT - BOARD_HEIGHT/2 - paddleRight.height

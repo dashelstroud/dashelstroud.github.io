@@ -13,7 +13,6 @@ body {
 
 
 .paddle{
-  background-color: rgb(28, 184, 61);
   width: 15px;
   height: 100px;
   position: absolute;
@@ -21,11 +20,13 @@ body {
 }
 
 #paddleLeft{
+  background-color: rgb(194, 46, 46);
   left: 3%;   /*Uncomment if you want to set a "starting" position*/ 
    top: 150px;    /* Uncomment if you want to set a "starting" position*/ 
 }
 
 #paddleRight{
+  background-color: rgb(28, 184, 61);
   left: 95%;   /*Uncomment if you want to set a "starting" position*/ 
    top: 150px;    /* Uncomment if you want to set a "starting" position*/ 
 }
@@ -61,28 +62,29 @@ body {
 
 #againButton{
   text-align: center;
+  font-size: 20px;
   background-color: rgb(76, 39, 100);
   color:rgb(144, 180, 60);
   position: absolute;
-  padding: 15px;
+  padding: 20px;
   border: none;
   border-radius: 5px;;
 }
 
 .win{
   position: relative;
-  width: 400px;
-  height: 400px;
 }
 
 #leftWin{
-  top: 500px;
+  width: 400px;
+  height: 400px;
+  top: 400px;
   left: 5%;
 }
 
 #rightWin{
   width: 400px;
-  height: 400px;
+  height: 500px;
   top: 400px;
-  left: 55%;
+  left: 50%;
 }
