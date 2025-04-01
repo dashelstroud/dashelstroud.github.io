@@ -88,3 +88,25 @@ body {
   top: 400px;
   left: 50%;
 }
+
+#blocker1{
+  background-color: rgb(71, 112, 119);
+  left: 75%;   
+   top: 80%;    /* Uncomment if you want to set a "starting" position*/ 
+   width: 15px;
+  height: 70px;
+  position: absolute;
+  border-radius: 15px;
+}
+
+#blocker2{
+  background-color: rgb(71, 112, 119);
+  left: 25%;   
+   top: 1%;    /* Uncomment if you want to set a "starting" position*/ 
+   width: 15px;
+  height: 70px;
+  position: absolute;
+  border-radius: 15px;
+}
+
+

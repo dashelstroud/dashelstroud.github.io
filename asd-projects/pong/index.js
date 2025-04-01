@@ -48,6 +48,9 @@ const KEY = {
     var leftScore = 0
 
     var rightScore = 0
+    
+    var blocker1 = gameItem('#blocker1', 0, 5) 
+    var blocker2 = gameItem('#blocker2', 0, 5) 
 
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
@@ -80,6 +83,13 @@ const KEY = {
     
     scoring()
     
+    drawGameItem(blocker1)
+    moveGameItem(blocker1)
+    moveBlocker(blocker1)
+
+    drawGameItem(blocker2)
+    moveGameItem(blocker2)
+    moveBlocker(blocker2)
   }
   
   /* 
@@ -135,6 +145,17 @@ function doCollide(obj1, obj2) {
   return false
 }
 
+function moveBlocker(block){
+  if(block.posY > BOARD_HEIGHT - block.height || block.posY < 0){
+    block.speedY = -block.speedY
+  }
+
+//bounce off the blocker
+if(doCollide(ball, block)){
+  ball.speedX = -ball.speedX
+  ball.speedY = -ball.speedY
+}
+}
 
 function wallCollision(obj){
   if(obj.posX > BOARD_WIDTH - obj.width ){
