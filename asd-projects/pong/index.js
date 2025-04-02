@@ -43,7 +43,7 @@ const KEY = {
 
     var paddleRight = gameItem('#paddleRight', 0, 0)
 
-    var ball = gameItem('#ball',(Math.random() * 5 + 10),(Math.random() * 3 + 4))
+    var ball = gameItem('#ball',(Math.random() * 5 + 10), (Math.random() * 3 + 4))
 
     var leftScore = 0
 
