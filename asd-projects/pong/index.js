@@ -43,13 +43,14 @@ const KEY = {
 
     var paddleRight = gameItem('#paddleRight', 0, 0)
 
-    var ball = gameItem('#ball',(Math.random() * 5 + 10), (Math.random() * 3 + 4))
+    var ball = gameItem('#ball',decideDirection(), decideDirection())
 
     var leftScore = 0
 
     var rightScore = 0
     
     var blocker1 = gameItem('#blocker1', 0, 5) 
+
     var blocker2 = gameItem('#blocker2', 0, 5) 
 
   // one-time setup
@@ -97,19 +98,19 @@ const KEY = {
   */
   function handleKeyDown(event) {
     if(event.which === KEY.W){
-      paddleLeft.speedY -= 10
+      paddleLeft.speedY -= 13
     }
 
     if(event.which === KEY.S){
-      paddleLeft.speedY += 10
+      paddleLeft.speedY += 13
     }
 
     if(event.which === KEY.up){
-      paddleRight.speedY -= 10
+      paddleRight.speedY -= 13
     }
 
     if(event.which === KEY.down){
-      paddleRight.speedY += 10
+      paddleRight.speedY += 13
     }
   }
 
@@ -152,8 +153,8 @@ function moveBlocker(block){
 
 //bounce off the blocker
 if(doCollide(ball, block)){
-  ball.speedX = -ball.speedX
-  ball.speedY = -ball.speedY
+  ball.speedX = -ball.speedX * 1.05
+  ball.speedY = -ball.speedY * 1.05
 }
 }
 
@@ -225,28 +226,41 @@ function scoring(){
 
     }
 
+    function decideDirection(){
+      var firstDirection = (Math.random() * 5 + 5)
+      var oppositeDirection = -firstDirection
+      
+      if((Math.random() > .49)){
+        return firstDirection
+      }
+      else{
+        return oppositeDirection
+      }
+    }
+
 
 function paddleBallCollision(){
  if(doCollide(ball,paddleLeft)){
   ball.speedX = -1.25 * ball.speedX
-  ball.speedY = 0.75 * ball.speedY
+  ball.speedY = 0.99 * ball.speedY
  } 
  if(doCollide(ball, paddleRight)){
   ball.speedX = -1.25 * ball.speedX
-  ball.speedY = 0.85 * ball.speedY
+  ball.speedY = 0.99 * ball.speedY
  }
 }
 
 function reset(){
   ball.posX = BOARD_WIDTH - BOARD_WIDTH/2
   ball.posY = BOARD_HEIGHT - BOARD_HEIGHT/2
-  ball.speedX = (Math.random() * 5 +5)
+  ball.speedX = decideDirection()
+  ball.speedY = decideDirection()
 
   paddleLeft.posY = BOARD_HEIGHT - BOARD_HEIGHT/2 - paddleLeft.height
   paddleRight.posY = BOARD_HEIGHT - BOARD_HEIGHT/2 - paddleRight.height
 }
 
-function playAgainButton(){ //This function is made so that the "Play Again" button is displayed when ever the game is over. It refreshes the page when clicked.
+function playAgainButton(){
   $('#againButton').css("top", BOARD_HEIGHT / 2);
   $('#againButton').css("left", BOARD_WIDTH / 2 - $('#againButton').width() / 2);
   $("#againButton").show();
@@ -263,6 +277,7 @@ function playAgainButton(){ //This function is made so that the "Play Again" but
 //handle someone winning
 //handle scoring
 //handle resetting
+//make again button
 
   
   function endGame() {
